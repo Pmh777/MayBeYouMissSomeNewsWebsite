@@ -1,0 +1,100 @@
+﻿@model MayBeYouMissSomeNews.Models.user
+@{
+
+    Layout = null;
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <title>Đăng ký</title>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- //Meta tags -->
+    @*<link rel="stylesheet" href="css/style.css" type="text/css" media="all" /><!-- Style-CSS -->
+        <link href="css/font-awesome.css" rel="stylesheet"><!-- font-awesome-icons -->*@
+    @Styles.Render("~/Content/cssRegisterAndLogin")
+</head>
+
+<body>
+    <section class="w3l-form-36">
+        <div class="form-36-mian section-gap">
+            <div class="wrapper">
+                <div class="form-inner-cont">
+                    <h3>Đăng ký thành viên</h3>
+                    @if (ViewBag.Status != null)
+            {
+                <p style="color:red">*@ViewBag.Status</p>
+            }
+                    
+                    @*<form action="#" method="post" class="signin-form">*@
+                    @using (Html.BeginForm("Register", "Accounts", FormMethod.Post, new { @class = "sign-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-input">
+                            <span class="fa fa-user-o" aria-hidden="true"></span> @*<input type="text" name="name" placeholder="Họ và tên" required />*@
+                            @Html.TextBox("name", "", new { required = "required", placeholder = "Họ và tên" })
+                        </div>
+                        <div class="form-input">
+                            <span class="fa fa-envelope-o" aria-hidden="true"></span> @*<input type="email" name="email" placeholder="Email" required />*@
+                            @Html.TextBox("email", "", new { required = "required", placeholder = "Email" })
+                        </div>
+                        <div class="form-input">
+                            <span class="fa fa-key" aria-hidden="true"></span>@*<input type="password" name="password" placeholder="Mật khẩu"
+                                required />*@
+                            @Html.TextBox("password", "", new { required = "required", placeholder = "Mật khẩu", type = "password" })
+                        </div>
+                        <div class="form-input">
+                            <span class="fa fa-key" aria-hidden="true"></span> @*<input type="password" name="password" placeholder="Nhập lại mật khẩu" required />*@
+                            @Html.TextBox("repassword", "", new { required = "required", placeholder = "Nhập lại mật khẩu", type = "password" })
+                        </div>
+
+                        <div class="login-remember d-grid">
+                            <label class="check-remaind">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <p class="remember">Lưu mật khẩu</p>
+                            </label>
+                            <input class="btn theme-button" value="Đăng ký" type="submit"  />
+                        </div>
+                       
+                    }
+
+                    <div class="social-icons">
+                        <p class="continue"><span>Or</span></p>
+                        <div class="social-login">
+                            <a href="#facebook">
+                                <div class="facebook">
+                                    <span class="fa fa-facebook" aria-hidden="true"></span>
+
+                                </div>
+                            </a>
+                            <a href="#google">
+                                <div class="google">
+                                    <span class="fa fa-google-plus" aria-hidden="true"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="signup">Bạn có tài khoản? <a href="Login" class="signuplink">Đăng nhập</a></p>
+                </div>
+
+                <!-- copyright -->
+                <div class="copy-right">
+                    <p>
+                        © 2020 by MayBeYouMissSomeNews
+                    </p>
+                </div>
+                <!-- //copyright -->
+            </div>
+        </div>
+    </section>
+</body>
+</html>

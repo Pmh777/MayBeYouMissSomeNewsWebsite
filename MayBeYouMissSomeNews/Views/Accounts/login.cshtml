@@ -1,0 +1,85 @@
+﻿@model MayBeYouMissSomeNews.Models.user
+@{
+
+    Layout = null;
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <title>Đăng nhập</title>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- //Meta tags -->
+    @*<link rel="stylesheet" href="css/style.css" type="text/css" media="all" /><!-- Style-CSS -->
+        <link href="css/font-awesome.css" rel="stylesheet"><!-- font-awesome-icons -->*@
+    @Styles.Render("~/Content/cssRegisterAndLogin")
+</head>
+
+<body>
+    <section class="w3l-form-36">
+        <div class="form-36-mian section-gap">
+            <div class="wrapper">
+                <div class="form-inner-cont">
+                    <h3>Đăng nhập</h3>
+                    
+                    @using (Html.BeginForm("Login", "Accounts", FormMethod.Post, new { @class = "sign-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-input">
+                            <span class="fa fa-envelope-o" aria-hidden="true"></span> @*<input type="email" name="email" placeholder="Email" required />*@
+                            @Html.TextBox("email", "", new { required = "required", placeholder = "Email" })
+                        </div>
+                        <div class="form-input">
+                            <span class="fa fa-key" aria-hidden="true"></span>@*<input type="password" name="password" placeholder="Mật khẩu" required />*@
+                            @Html.TextBox("password", "", new { required = "required", placeholder = "Mật khẩu", type = "password" })
+                        </div>
+                        <div class="login-remember d-grid">
+                            <label class="check-remaind">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <p class="remember">Lưu mật khẩu</p>
+                            </label>
+
+                            <input type="submit" value="Đăng nhập" class="btn theme-button" />
+                        </div>
+                    }
+
+                    <div class="social-icons">
+                        <p class="continue"><span>Or</span></p>
+                        <div class="social-login">
+                            <a href="#facebook">
+                                <div class="facebook">
+                                    <span class="fa fa-facebook" aria-hidden="true"></span>
+
+                                </div>
+                            </a>
+                            <a href="#google">
+                                <div class="google">
+                                    <span class="fa fa-google-plus" aria-hidden="true"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="signup">Bạn chưa có tài khoản? <a href="Register" class="signuplink">Đăng ký</a></p>
+                </div>
+
+                <!-- copyright -->
+                <div class="copy-right">
+                    <p>
+                        © 2020 by MayBeYouMissSomeNews
+                    </p>
+                </div>
+                <!-- //copyright -->
+            </div>
+        </div>
+    </section>
+</body>
+</html>
