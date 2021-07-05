@@ -21,7 +21,7 @@ namespace MayBeYouMissSomeNews.Controllers
         public ActionResult Login(FormCollection f)
         {
             // check username and password
-            UserAccountManagerContext context = new UserAccountManagerContext();
+            DBManagerContext context = new DBManagerContext();
             string user = f["email"].ToString();
             string pass = f["password"].ToString();
 
@@ -56,7 +56,7 @@ namespace MayBeYouMissSomeNews.Controllers
             }
             else
             {
-                UserAccountManagerContext context = new UserAccountManagerContext();
+                DBManagerContext context = new DBManagerContext();
                 string gmail = f["email"].ToString();
                 user userInvalid = context.users.SingleOrDefault(n => n.gmail == gmail);
                 user u = new user();

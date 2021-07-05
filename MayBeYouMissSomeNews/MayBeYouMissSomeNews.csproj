@@ -173,8 +173,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivityManagerContext.cs" />
+    <Compile Include="Models\category.cs" />
+    <Compile Include="Models\comment.cs" />
+    <Compile Include="Models\DBManagerContext.cs" />
+    <Compile Include="Models\employee.cs" />
+    <Compile Include="Models\liked.cs" />
+    <Compile Include="Models\news.cs" />
+    <Compile Include="Models\newsdetail.cs" />
+    <Compile Include="Models\saved.cs" />
     <Compile Include="Models\user.cs" />
-    <Compile Include="Models\UserAccountManagerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
