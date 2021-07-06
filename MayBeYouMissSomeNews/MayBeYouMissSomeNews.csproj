@@ -187,9 +187,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\argon.css" />
+    <Content Include="Content\css\argon.min.css" />
     <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\style-starter.css" />
     <Content Include="Content\css\styleRegisterAndLogin.css" />
+    <Content Include="Content\images\avatar.jpg" />
     <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\Br.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -222,6 +227,8 @@
     <Content Include="Views\Accounts\login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Accounts\register.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
