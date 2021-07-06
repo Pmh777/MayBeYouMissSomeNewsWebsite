@@ -16,9 +16,12 @@
         {
 
             user u = (user)Session["Account"];
-            <li>hi! @u.name </li>
+            <li>hi! @u.name </li>}
+        @if (Session["AccountAdmin"] != null)
+        {
 
-        }
+            employee u = (employee)Session["AccountAdmin"];
+            <li>Chào Bạn! @u.name </li>}
     </div>
 </body>
 </html>

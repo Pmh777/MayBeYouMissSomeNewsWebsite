@@ -192,6 +192,8 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\style-starter.css" />
     <Content Include="Content\css\styleRegisterAndLogin.css" />
+    <Content Include="Content\css\styleRegisterAndLoginAdmin.css" />
+    <Content Include="Content\images\1.jpg" />
     <Content Include="Content\images\avatar.jpg" />
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\Br.jpg" />
@@ -229,6 +231,9 @@
     <Content Include="Views\Accounts\register.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Home\EditProfile.cshtml" />
+    <Content Include="Views\Accounts\LoginAdmin.cshtml" />
+    <Content Include="Views\Accounts\RegisterAdmin.cshtml" />
+    <Content Include="Views\Accounts\ChangepasswordAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

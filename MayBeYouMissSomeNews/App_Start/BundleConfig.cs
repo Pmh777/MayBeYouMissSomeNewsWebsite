@@ -14,6 +14,10 @@ namespace MayBeYouMissSomeNews
                 "~/Content/css/styleRegisterAndLogin.css",
                 "~/Content/css/font-awesome.css"
                 ));
+            bundles.Add(new StyleBundle("~/Content/cssRegisterAndLoginAdmin").Include(
+                "~/Content/css/styleRegisterAndLoginAdmin.css",
+                "~/Content/css/font-awesome.css"
+                ));
             bundles.Add(new StyleBundle("~/Content/cssProfile").Include(
                 "~/Content/css/style-starter.css",
                 "~/Content/css/styleRegisterAndLogin.css"
