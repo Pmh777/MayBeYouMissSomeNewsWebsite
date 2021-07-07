@@ -35,48 +35,19 @@ Author URL: http://w3layouts.com
             <h3 class="section-title-left">Leave Us a message </h3>
             <div class="contact-grids d-grid">
                 <div class="contact-left">
-                    <h3 class="mb-3">Contact Details</h3>
-                    <p>
-                        Everything start with a Hello! We’re here to answer any questions you may have and create an effective
-                        solution for your instructional needs.
-                    </p>
+                    @if (Session["Account"] != null)
+                    {
+                        user u = (user)Session["Account"];
+                        <img src="@u.photo" style="width: 722px; height: 482px">
 
-                    <p>
-                        We have a dedicated support center for all of your support needs. We usually get back to you within 12-24
-                        hours.
-                    </p>
-                    <div class="cont-details">
-                        <div class="cont-top margin-up">
-                            <div class="cont-left text-center">
-                                <span class="fa fa-map-marker"></span>
-                            </div>
-                            <div class="cont-right">
-                                <h6>Address</h6>
-                                <p>475A Điện Biên Phủ, Thành phố Hồ Chí Minh</p>
-                            </div>
-                        </div>
-                        <div class="cont-top margin-up">
-                            <div class="cont-left text-center">
-                                <span class="fa fa-phone"></span>
-                            </div>
-                            <div class="cont-right">
-                                <h6>Call Us</h6>
-                                <p>
-                                    <a href="tel:+(84)28-5445-2222">+(84)234-11-2446</a>, <a href="tel:+(1)234-11-4455"
-                                                                                            class="ml-2">+(12)234-11-4455</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="cont-top margin-up">
-                            <div class="cont-left text-center">
-                                <span class="fa fa-envelope-o"></span>
-                            </div>
-                            <div class="cont-right">
-                                <h6>Email Us</h6>
-                                <p><a href="mailto:example@mail.com" class="mail">example@mail.com</a></p>
-                            </div>
-                        </div>
-                    </div>
+                    }
+                    @if (Session["Account"] == null)
+                    {
+                        user u = (user)Session["Account"];
+                        <img src="~/Content/images/avatar.jpg" style="width: 722px; height: 482px">
+
+                    }
+
                 </div>
                 <div class="contact-right">
                     <form action="https://sendmail.w3layouts.com/submitForm" method="post" class="signin-form">
@@ -85,34 +56,25 @@ Author URL: http://w3layouts.com
                         {
 
                             user u = (user)Session["Account"];
-                        <div class="input-grids">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-3 order-lg-2">
-                                    <div class="card-profile-image">
-                                        <a href="#">
-                                            <img src="@u.photo" class="rounded-circle" style="width: 150px; height: 150px">
-                                        </a>
-                                    </div>
+                            <div class="input-grids">
+
+                                <div style="magin-top: 50px">
+                                    <h4>Your Name</h4>
+                                    <a>@u.name</a><hr />
+                                    <h4>Gmail</h4>
+                                    <a>@u.gmail</a><hr />
+                                    <h4>Gender</h4>
+                                    <a>@u.gender</a> <hr />
+                                    <h4>Created Date</h4>
+                                    <a>@u.createddate</a>  <hr />
                                 </div>
                             </div>
-                            <div style="magin-top: 50px">
-                                <h4>Your Name</h4>
-                                <a>@u.name</a><hr />
-                                <h4>Gmail</h4>
-                                <a>@u.gmail</a><hr />
-                                <h4>Gender</h4>
-                                <a>@u.gender</a> <hr />
-                                <h4>Created Date</h4>
-                                <a>@u.createddate</a>  <hr />
-                            </div>
-                        </div>
 
                             <a href="@Url.Action("EditProfile","Home", new { id = u.userid })" class="btn btn-primary">Edit Profile</a>
 
                         }
                         @if (Session["Account"] == null)
                         {
-                            user u = (user)Session["Account"];
                             <div class="input-grids">
                                 <div class="row justify-content-center">
                                     <div class="col-lg-3 order-lg-2">
@@ -131,13 +93,13 @@ Author URL: http://w3layouts.com
                                        required="" />
                                 <input type="text" name="w3lSubect" id="w3lSubect" placeholder="Your CreatedDay*" class="contact-input"
                                        required="" />
-                                <a href="@Url.Action("EditProfile","Home", new { id = u.userid })" class="btn btn-primary">Edit Profile</a>
+                                <a class="btn btn-primary">Edit Profile</a>
                             </div>
 
                         }
 
                     </form>
-            </div>
+                </div>
             </div>
     </section>
     <!-- /contact-form-2 -->
@@ -166,7 +128,7 @@ Author URL: http://w3layouts.com
 
         <!-- move top -->
         <script>
-    // When the user scrolls down 20px from the top of the document, show the button
+            // When the user scrolls down 20px from the top of the document, show the button
             window.onscroll = function () {
                 scrollFunction()
             };
@@ -194,7 +156,7 @@ Author URL: http://w3layouts.com
 
     <!-- disable body scroll which navbar is in active -->
     <script>
-    $(function () {
+        $(function () {
             $('.navbar-toggler').click(function () {
                 $('body').toggleClass('noscroll');
             })

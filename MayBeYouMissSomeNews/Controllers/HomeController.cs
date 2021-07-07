@@ -41,7 +41,7 @@ namespace MayBeYouMissSomeNews.Controllers
                 context.users.AddOrUpdate(user);
                 context.SaveChanges();
             }
-            return RedirectToAction("Profile");
+            return RedirectToAction("Index");
         }
     }
 }

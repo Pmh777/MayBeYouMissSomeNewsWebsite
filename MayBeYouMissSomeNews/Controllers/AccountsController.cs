@@ -30,7 +30,7 @@ namespace MayBeYouMissSomeNews.Controllers
             if (u != null)
             {
                 Session["Account"] = u;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Profile", "Home");
             }
             else
 
