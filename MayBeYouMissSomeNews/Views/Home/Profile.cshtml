@@ -1,36 +1,12 @@
-﻿@model MayBeYouMissSomeNews.Models.user
+﻿
 @using MayBeYouMissSomeNews.Models
 @{
-    Layout = null;
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/LayoutOfWeb.cshtml";
 }
 
-<!DOCTYPE html>
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
-<!doctype html>
-<html lang="en">
-
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Design Blog a Blog Category Bootstrap Responsive Website Template | Contact : W3layouts</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
-    @Styles.Render("~/Content/cssProfile")
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style-starter.css">
-</head>
-
-<body>
-    <!-- contact-form 2 -->
-    <section class="w3l-contact-2 py-5">
+   @* <section class="w3l-contact-2 py-5">
         <div class="form-35-mian section-gap">
             <h3 class="section-title-left">Leave Us a message </h3>
             <div class="contact-grids d-grid">
@@ -101,70 +77,65 @@ Author URL: http://w3layouts.com
                     </form>
                 </div>
             </div>
-    </section>
-    <!-- /contact-form-2 -->
-    <!-- footer -->
-    <footer class="w3l-footer-16">
-        <div class="footer-content py-lg-5 py-4 text-center">
-            <div class="container">
-                <div class="copy-right">
-                    <h6>
-                        © 2020 Design Blog . Made with <span class="fa fa-heart" aria-hidden="true"></span>, Designed by <a href="https://w3layouts.com">W3layouts</a>
-                    </h6>
+    </section>*@
+<section class="w3l-contact-2 py-5">
+    <div class="container py-lg-5 py-md-4">
+        <h3 class="section-title-left">Thông tin của bạn</h3>
+        @if (Session["Account"] != null)
+        {
+
+            user u = (user)Session["Account"];
+            <div class="contact-grids d-grid">
+                <div class="contact-left">
+                    <div class="cont-details">
+                        <div class="cont-top margin-up">
+                            <div class="cont-left text-center">
+                                <span class="fa fa-id-card-o"></span>
+                            </div>
+                            <div class="cont-right">
+                                <h6>Họ và tên</h6>
+                                <p>@u.name</p>
+                            </div>
+                        </div>
+                        <div class="cont-top margin-up">
+                            <div class="cont-left text-center">
+                                <span class="fa fa-user"></span>
+                            </div>
+                            <div class="cont-right">
+                                <h6>Giới tính</h6>
+                                
+                                    @if(@u.gender==1)
+                                {
+                                    <p>Nữ</p>
+                                    }
+                                else if(@u.gender==0)
+                                {
+                                <p>Nam</p>
+                                }
+                                else{
+                                <p>Khác</p>
+                                }
+                               
+                            </div>
+                        </div>
+                        <div class="cont-top margin-up">
+                            <div class="cont-left text-center">
+                                <span class="fa fa-envelope-o"></span>
+                            </div>
+                            <div class="cont-right">
+                                <h6>Email</h6>
+                                <p>@u.gmail</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul class="author-icons mt-4">
-                    <li><a class="facebook" href="#url"><span class="fa fa-facebook" aria-hidden="true"></span></a> </li>
-                    <li><a class="twitter" href="#url"><span class="fa fa-twitter" aria-hidden="true"></span></a></li>
-                    <li><a class="google" href="#url"><span class="fa fa-google-plus" aria-hidden="true"></span></a></li>
-                    <li><a class="linkedin" href="#url"><span class="fa fa-linkedin" aria-hidden="true"></span></a></li>
-                    <li><a class="github" href="#url"><span class="fa fa-github" aria-hidden="true"></span></a></li>
-                    <li><a class="dribbble" href="#url"><span class="fa fa-dribbble" aria-hidden="true"></span></a></li>
-                </ul>
-                <button onclick="topFunction()" id="movetop" title="Go to top">
-                    <span class="fa fa-angle-up"></span>
-                </button>
+                <div class="contact-right">
+
+                    <img src="~/Content/assets/img/avatar/author.jpg" width="400" height="400" alt="" class="img-fluid radius-image news-image">
+                    <br />
+                    <br />
+                    <button class="btn btn-style btn-outline"><a href="/Home/EditProfile/@u.userid">Chỉnh sửa thông tin</a></button>
+                </div>
             </div>
-        </div>
-
-        <!-- move top -->
-        <script>
-            // When the user scrolls down 20px from the top of the document, show the button
-            window.onscroll = function () {
-                scrollFunction()
-            };
-
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    document.getElementById("movetop").style.display = "block";
-                } else {
-                    document.getElementById("movetop").style.display = "none";
-                }
-            }
-
-            // When the user clicks on the button, scroll to the top of the document
-            function topFunction() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            }</script>
-        <!-- //move top -->
-    </footer>
-    <!-- //footer -->
-    <!-- Template JavaScript -->
-    <script src="assets/js/theme-change.js"></script>
-
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-
-    <!-- disable body scroll which navbar is in active -->
-    <script>
-        $(function () {
-            $('.navbar-toggler').click(function () {
-                $('body').toggleClass('noscroll');
-            })
-        });</script>
-    <!-- disable body scroll which navbar is in active -->
-
-    <script src="assets/js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+        }
+</section>

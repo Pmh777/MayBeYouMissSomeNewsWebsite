@@ -30,7 +30,7 @@ namespace MayBeYouMissSomeNews.Controllers
             if (u != null)
             {
                 Session["Account"] = u;
-                return RedirectToAction("Profile", "Home");
+                return RedirectToAction("Index", "Home");
             }
             else
 
@@ -86,7 +86,7 @@ namespace MayBeYouMissSomeNews.Controllers
         public ActionResult Logout()
         {
             Session["Account"] = null;
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
         // GET: Accounts
         [HttpGet]
@@ -115,7 +115,7 @@ namespace MayBeYouMissSomeNews.Controllers
             {
 
                 Session["AccountAdmin"] = u;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Dashboard", "Manage");
             }
             //back to login
             // return View();
@@ -159,7 +159,7 @@ namespace MayBeYouMissSomeNews.Controllers
                     u.photo = null;
                     context.employees.Add(u);
                     context.SaveChanges();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RegisterSuccess", "Manage");
                 }
                 else
                 {
@@ -204,10 +204,11 @@ namespace MayBeYouMissSomeNews.Controllers
                 return View();
             }
         }
+        
         public ActionResult LogoutAdmin()
         {
             Session["AccountAdmin"] = null;
-            return RedirectToAction("Index");
+            return RedirectToAction("LoginAdmin","Home");
         }
     }
 }

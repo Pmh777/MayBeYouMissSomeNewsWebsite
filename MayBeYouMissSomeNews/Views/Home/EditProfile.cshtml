@@ -1,131 +1,40 @@
 ﻿@model MayBeYouMissSomeNews.Models.user
 @using MayBeYouMissSomeNews.Models
 @{
-    Layout = null;
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/LayoutOfWeb.cshtml";
 }
 
-<!DOCTYPE html>
+
+<section class="w3l-contact-2 py-5">
+    <div class="container py-lg-5 py-md-4">
+        <h3 class="section-title-left">Cập nhật thông tin</h3>
+        <div class="contact-grids d-grid">
+            <div class="contact-left">
+                <img src="~/Content/assets/img/avatar/author.jpg" width="400" height="400" alt="" class="img-fluid radius-image news-image">
+                <br />
+                <br />
+                <input class="" type="file" value="Chọn ảnh" />
+            </div>
+            <div class="contact-right">
+                @using (Html.BeginForm("EditProfile", "Home", FormMethod.Post, new { @class = "signin-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="input-grids">
+
+                        @Html.TextBox("name", "", new { required = "required", placeholder = "name", type = "text", @class = "contact-input" })
+
+                        @Html.TextBox("gender", "", new { required = "required", placeholder = "name", type = "text", @class = "contact-input" })
 
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Design Blog a Blog Category Bootstrap Responsive Website Template | Contact : W3layouts</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
-    @Styles.Render("~/Content/cssProfile")
-    @Styles.Render("~/Content/cssEditProfile")
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style-starter.css">
-</head>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="card-body">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.userid)
-        <form>
-
-            <section class="w3l-contact-2 py-5">
-                <div class="form-35-mian section-gap">
-                    <h3 class="section-title-left">Leave Us a message </h3>
-                    <div class="contact-grids d-grid">
-                        <div class="contact-left">
-                            @if (Session["Account"] != null)
-                            {
-                                user u = (user)Session["Account"];
-                                <img src="@u.photo" style="width: 722px; height: auto">
-
-                            }
-                            @if (Session["Account"] == null)
-                            {
-                                user u = (user)Session["Account"];
-                                <img src="~/Content/images/avatar.jpg" style="width: 722px; height: 482px">
-
-                            }
-
-                        </div>
-                        <div class="contact-right">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.photo, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.photo, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.gmail, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.gmail, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.gmail, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="display: none">
-                                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="display: none">
-                                @Html.LabelFor(model => model.createddate, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.createddate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.createddate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="display: none">
-                                @Html.LabelFor(model => model.modifieddate, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.modifieddate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.modifieddate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <hr class="my-4" />
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-default" />
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
-            </section>
 
-        </form>
+
+                    <input class="btn btn-style btn-outline" type="submit" value="Lưu" />
+
+                }
+            </div>
+        </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to Profike", "Profile")
-</div>
+</section>
