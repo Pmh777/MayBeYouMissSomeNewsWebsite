@@ -3396,6 +3396,7 @@
     <Content Include="Views\Categories\List.cshtml" />
     <Content Include="Views\Employees\List.cshtml" />
     <Content Include="Views\Users\List.cshtml" />
+    <Content Include="Views\Home\AdminProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

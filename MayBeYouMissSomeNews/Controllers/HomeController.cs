@@ -18,7 +18,10 @@ namespace MayBeYouMissSomeNews.Controllers
         {
             return View();
         }
-
+        public ActionResult AdminProfile()
+        {
+            return View();
+        }
         public ActionResult Profile()
         {
           
