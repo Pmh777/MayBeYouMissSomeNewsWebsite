@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace MayBeYouMissSomeNews.Models
 {
-    public partial class ActivityManagerContext : DbContext
+    public partial class ActivityContext : DbContext
     {
-        public ActivityManagerContext()
-            : base("name=ActivityManagerContext")
+        public ActivityContext()
+            : base("name=ActivityContext")
         {
         }
 

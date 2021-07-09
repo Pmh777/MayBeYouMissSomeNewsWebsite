@@ -14,6 +14,10 @@ namespace MayBeYouMissSomeNews.Controllers
         {
             return View();
         }
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
 
         public ActionResult Profile()
         {
@@ -23,7 +27,7 @@ namespace MayBeYouMissSomeNews.Controllers
         [HttpGet]
         public ActionResult EditProfile(int id)
         {
-            DBManagerContext context = new DBManagerContext();
+            DBContext context = new DBContext();
             user user = context.users.SingleOrDefault(p => p.userid == id);
             if (user == null)
             {
@@ -34,7 +38,7 @@ namespace MayBeYouMissSomeNews.Controllers
         [HttpPost, ActionName("EditProfile")]
         public ActionResult EditProfile(user user)
         {
-            DBManagerContext context = new DBManagerContext();
+            DBContext context = new DBContext();
             user dbUpdate = context.users.FirstOrDefault(p => p.userid == user.userid);
             if (dbUpdate != null)
             {

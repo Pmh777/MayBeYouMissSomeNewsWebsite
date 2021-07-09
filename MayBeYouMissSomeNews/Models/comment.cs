@@ -21,7 +21,6 @@ namespace MayBeYouMissSomeNews.Models
 
         [Key]
         [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int commentid { get; set; }
 
         [StringLength(255)]

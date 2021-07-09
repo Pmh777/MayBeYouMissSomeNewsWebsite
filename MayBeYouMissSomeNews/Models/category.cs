@@ -12,7 +12,7 @@ namespace MayBeYouMissSomeNews.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public category()
         {
-            newsdetails = new HashSet<newsdetail>();
+            news = new HashSet<news>();
         }
 
         public int categoryid { get; set; }
@@ -31,6 +31,6 @@ namespace MayBeYouMissSomeNews.Models
         public int? modifiedby { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<newsdetail> newsdetails { get; set; }
+        public virtual ICollection<news> news { get; set; }
     }
 }

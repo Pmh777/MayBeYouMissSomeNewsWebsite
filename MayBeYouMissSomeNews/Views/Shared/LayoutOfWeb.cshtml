@@ -60,9 +60,7 @@ Author URL: http://w3layouts.com
                                 <a class="dropdown-item cp__active" href="culture.html">Culture posts</a>
                             </div>
                         </li>
-                        <li class="nav-item contact__active">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
+                        
                     </ul>
 
                     <!--/search-right-->
@@ -89,7 +87,7 @@ Author URL: http://w3layouts.com
 
                         user u = (user)Session["Account"];
                         <div class="header-author d-flex ml-lg-4 pl-2 mt-lg-0 mt-3">
-                            <a class="img-circle img-circle-sm" href="Home/Profile/@u.userid">
+                            <a class="img-circle img-circle-sm" href="/Home/Profile/@u.userid">
                                 <img src="~/Content/assets/images/avatar/author.jpg" class="img-fluid" alt="...">
                             </a>
                             <div class="align-self ml-3">
@@ -97,8 +95,8 @@ Author URL: http://w3layouts.com
                                     <h5>@u.name</h5>
                                 </a>
                                 <span>
-                                    @* @Html.ActionLink("Đăng xuất", "Logout","Accounts")*@
-                                    <a href="/Accounts/Logout">Đăng xuất</a>
+                                    @Html.ActionLink("Đăng xuất", "Logout","Accounts")
+                                    @*<a href="/Accounts/Logout">Đăng xuất</a>*@
                                 </span>
                             </div>
                         </div>

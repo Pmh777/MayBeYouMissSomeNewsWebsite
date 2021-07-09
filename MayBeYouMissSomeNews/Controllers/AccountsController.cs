@@ -21,7 +21,7 @@ namespace MayBeYouMissSomeNews.Controllers
         public ActionResult Login(FormCollection f)
         {
             // check username and password
-            DBManagerContext context = new DBManagerContext();
+            DBContext context = new DBContext();
             string user = f["email"].ToString();
             string pass = f["password"].ToString();
 
@@ -56,7 +56,7 @@ namespace MayBeYouMissSomeNews.Controllers
             }
             else
             {
-                DBManagerContext context = new DBManagerContext();
+                DBContext context = new DBContext();
                 string gmail = f["email"].ToString();
                 user userInvalid = context.users.SingleOrDefault(n => n.gmail == gmail);
                 user u = new user();
@@ -100,11 +100,11 @@ namespace MayBeYouMissSomeNews.Controllers
         public ActionResult LoginAdmin(FormCollection f)
         {
             // check username and password
-            DBManagerContext context = new DBManagerContext();
+            DBContext context = new DBContext();
             string user = f["email"].ToString();
             string pass = f["password"].ToString();
 
-            employee u = context.employees.SingleOrDefault(n => n.gmail == user && n.password == pass);
+            employee u = context.employees.SingleOrDefault(n => n.email == user && n.password == pass);
             //if user input right account, show homepage(index)
             if (u == null)
             {
@@ -115,7 +115,7 @@ namespace MayBeYouMissSomeNews.Controllers
             {
 
                 Session["AccountAdmin"] = u;
-                return RedirectToAction("Dashboard", "Manage");
+                return RedirectToAction("Dashboard", "Home");
             }
             //back to login
             // return View();
@@ -139,14 +139,14 @@ namespace MayBeYouMissSomeNews.Controllers
             }
             else
             {
-                DBManagerContext context = new DBManagerContext();
-                string gmail = f["email"].ToString();
-                employee employeeInvalid = context.employees.SingleOrDefault(n => n.gmail == gmail);
+                DBContext context = new DBContext();
+                string email = f["email"].ToString();
+                employee employeeInvalid = context.employees.SingleOrDefault(n => n.email == email);
                 employee u = new employee();
                 if (employeeInvalid == null)
                 {
                     u.name = f["name"].ToString();
-                    u.gmail = f["email"].ToString();
+                    u.email = f["email"].ToString();
                     u.birthday = System.Convert.ToDateTime(f["birthday"]);
                     u.password = f["password"].ToString();
                     u.status = 1;
@@ -159,7 +159,7 @@ namespace MayBeYouMissSomeNews.Controllers
                     u.photo = null;
                     context.employees.Add(u);
                     context.SaveChanges();
-                    return RedirectToAction("RegisterSuccess", "Manage");
+                    return View();
                 }
                 else
                 {
@@ -190,9 +190,9 @@ namespace MayBeYouMissSomeNews.Controllers
             }
             else
             {
-                DBManagerContext context = new DBManagerContext();
-                string gmail = f["email"].ToString();
-                employee employeeInvalid = context.employees.SingleOrDefault(n => n.password == pass && n.gmail == gmail);
+                DBContext context = new DBContext();
+                string email = f["email"].ToString();
+                employee employeeInvalid = context.employees.SingleOrDefault(n => n.password == pass && n.email == email);
                 employee u = new employee();
                 if (employeeInvalid != null)
                 {

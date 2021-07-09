@@ -6,14 +6,10 @@ using System.Web.Mvc;
 
 namespace MayBeYouMissSomeNews.Controllers
 {
-    public class ManageController : Controller
+    public class NewsController : Controller
     {
-        // GET: Managed
-        public ActionResult Dashboard()
-        {
-            return View();
-        }
-        public ActionResult RegisterSuccess()
+        // GET: News
+        public ActionResult List()
         {
             return View();
         }

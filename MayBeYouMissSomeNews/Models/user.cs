@@ -19,14 +19,18 @@ namespace MayBeYouMissSomeNews.Models
         [StringLength(255)]
         public string photo { get; set; }
 
-        [Required]
+        public DateTime? birthday { get; set; }
+
+        [StringLength(10)]
+        public string phone { get; set; }
+
         [StringLength(100)]
         public string gmail { get; set; }
 
-        public byte? status { get; set; }
-
         [StringLength(255)]
         public string password { get; set; }
+
+        public byte? status { get; set; }
 
         public DateTime? createddate { get; set; }
 

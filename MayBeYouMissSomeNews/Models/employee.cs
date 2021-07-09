@@ -21,16 +21,21 @@ namespace MayBeYouMissSomeNews.Models
 
         public DateTime? birthday { get; set; }
 
-        public byte? status { get; set; }
+        [StringLength(10)]
+        public string phone { get; set; }
 
-        public byte? type { get; set; }
+        [StringLength(255)]
+        public string address { get; set; }
 
-        [Required]
         [StringLength(100)]
-        public string gmail { get; set; }
+        public string email { get; set; }
 
         [StringLength(255)]
         public string password { get; set; }
+
+        public byte? status { get; set; }
+
+        public byte? type { get; set; }
 
         public DateTime? createddate { get; set; }
 

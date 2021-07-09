@@ -8,21 +8,23 @@ namespace MayBeYouMissSomeNews.Models
 
     public partial class news
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public news()
-        {
-            newsdetails = new HashSet<newsdetail>();
-        }
-
         public int newsid { get; set; }
+
+        public int categoryid { get; set; }
 
         [StringLength(100)]
         public string tittle { get; set; }
 
-        public byte? status { get; set; }
+        [StringLength(255)]
+        public string photo { get; set; }
 
         [StringLength(255)]
         public string description { get; set; }
+
+        [StringLength(3000)]
+        public string content { get; set; }
+
+        public byte? status { get; set; }
 
         public DateTime? createddate { get; set; }
 
@@ -32,7 +34,6 @@ namespace MayBeYouMissSomeNews.Models
 
         public int? modifiedby { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<newsdetail> newsdetails { get; set; }
+        public virtual category category { get; set; }
     }
 }
