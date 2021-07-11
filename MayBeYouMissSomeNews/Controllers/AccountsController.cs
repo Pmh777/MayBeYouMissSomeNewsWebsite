@@ -25,17 +25,24 @@ namespace MayBeYouMissSomeNews.Controllers
             string user = f["email"].ToString();
             string pass = f["password"].ToString();
 
-            user u = context.users.SingleOrDefault(n => n.gmail == user && n.password == pass);
-            //if user input right account, show homepage(index)
+
+            user u = context.users.SingleOrDefault(n => n.email == user);
             if (u != null)
             {
-                Session["Account"] = u;
-                return RedirectToAction("Index", "Home");
-            }
-            else
+                string hashpass = u.password;
+                Boolean checkPass = BCrypt.Net.BCrypt.Verify(pass, hashpass);
+                //if user input right account, show homepage(index)
+                if (checkPass)
+                {
+                    Session["Account"] = u;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
 
-                //back to login
-                return View();
+                    //back to login
+                    return View();
+            }
+            return View();
         }
         public ActionResult Register()
         {
@@ -58,19 +65,21 @@ namespace MayBeYouMissSomeNews.Controllers
             {
                 DBContext context = new DBContext();
                 string gmail = f["email"].ToString();
-                user userInvalid = context.users.SingleOrDefault(n => n.gmail == gmail);
+                user userInvalid = context.users.SingleOrDefault(n => n.email == gmail);
                 user u = new user();
                 if (userInvalid == null)
                 {
                     u.name = f["name"].ToString();
-                    u.gmail = f["email"].ToString();
-                    u.password = f["password"].ToString();
+                    u.email = f["email"].ToString();
+                    // encrypt password by BCrypt
+                    u.password = BCrypt.Net.BCrypt.HashPassword(f["password"].ToString(), 12);
                     u.status = 1;
                     u.createddate = DateTime.Now;
                     u.modifieddate = null;
-                    u.photo = null;
+                    u.photo = "defaultAvatar.png";
                     context.users.Add(u);
                     context.SaveChanges();
+                    Session["Account"] = u;
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -99,26 +108,26 @@ namespace MayBeYouMissSomeNews.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LoginAdmin(FormCollection f)
         {
-            // check username and password
             DBContext context = new DBContext();
-            string user = f["email"].ToString();
+            string username = f["email"].ToString();
             string pass = f["password"].ToString();
-
-            employee u = context.employees.SingleOrDefault(n => n.email == user && n.password == pass);
-            //if user input right account, show homepage(index)
-            if (u == null)
+            employee u = context.employees.SingleOrDefault(n => n.email == username);
+            if (u != null)
             {
-                ViewBag.Status = "Tài Khoản hoặc Mật Khẩu không đúng!";
-                return View();
-            }
-            else
-            {
+                string hashpass = u.password;
+                Boolean checkPass = BCrypt.Net.BCrypt.Verify(pass, hashpass);
+                //if user input right account, show homepage(index)
+                if (checkPass)
+                {
+                    Session["AccountAdmin"] = u;
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                else
 
-                Session["AccountAdmin"] = u;
-                return RedirectToAction("Dashboard", "Home");
+                    //back to login
+                    return View();
             }
-            //back to login
-            // return View();
+            return View();
         }
         public ActionResult RegisterAdmin()
         {
@@ -127,7 +136,6 @@ namespace MayBeYouMissSomeNews.Controllers
 
         [HttpPost, ActionName("RegisterAdmin")]
         [ValidateAntiForgeryToken]
-
         public ActionResult RegisterAdmin(FormCollection f)
         {
             string pass = f["password"].ToString();
@@ -148,21 +156,21 @@ namespace MayBeYouMissSomeNews.Controllers
                     u.name = f["name"].ToString();
                     u.email = f["email"].ToString();
                     u.birthday = System.Convert.ToDateTime(f["birthday"]);
-                    u.password = f["password"].ToString();
-                    u.status = 1;
-                    u.gender = 1;
-                    u.type = 1;
+                    u.password = BCrypt.Net.BCrypt.HashPassword(f["password"].ToString(), 12);
+                    u.status = 0;
+                    u.gender = null;
+                    u.type = 0;
                     u.phone = f["phone"].ToString();
                     u.address = f["address"].ToString();
                     u.createddate = DateTime.Now;
                     u.createdby = null;
                     u.modifiedby = null;
                     u.modifieddate = null;
-                    u.photo = null;
+                    u.photo = "defaultAvatar.png";
                     context.employees.Add(u);
                     context.SaveChanges();
                     ViewBag.Status = "Đăng kí thành công!Vui lòng chờ xét duyệt!";
-                    return View("LoginAdmin");
+                    return View();
                 }
                 else
                 {

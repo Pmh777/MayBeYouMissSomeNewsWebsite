@@ -26,6 +26,8 @@ namespace MayBeYouMissSomeNews.Models
 
         public byte? status { get; set; }
 
+        public int? view { get; set; }
+
         public DateTime? createddate { get; set; }
 
         public int? createdby { get; set; }

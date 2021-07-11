@@ -25,7 +25,7 @@ namespace MayBeYouMissSomeNews.Models
         public string phone { get; set; }
 
         [StringLength(100)]
-        public string gmail { get; set; }
+        public string email { get; set; }
 
         [StringLength(255)]
         public string password { get; set; }

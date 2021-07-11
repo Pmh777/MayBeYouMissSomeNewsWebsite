@@ -53,7 +53,7 @@ namespace MayBeYouMissSomeNews.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<user>()
-                .Property(e => e.gmail)
+                .Property(e => e.email)
                 .IsUnicode(false);
 
             modelBuilder.Entity<user>()

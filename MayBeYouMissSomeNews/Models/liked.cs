@@ -18,5 +18,9 @@ namespace MayBeYouMissSomeNews.Models
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int newsid { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
+        public int likedid { get; set; }
     }
 }

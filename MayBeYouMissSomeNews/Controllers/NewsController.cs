@@ -13,5 +13,9 @@ namespace MayBeYouMissSomeNews.Controllers
         {
             return View();
         }
+        public ActionResult AddNews()
+        {
+            return View();
+        }
     }
 }

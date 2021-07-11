@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "AddNews";
+    Layout = "~/Views/Shared/LayoutOfAdmin.cshtml";
+}
+@section jsFooter{
+
+    <script>
+
+
+        $(document).ready(function () {
+            CKEDITOR.replace("content");
+           @* $("#btnSelectImage").click(function () {
+                var finder = new CKFinder();
+                finder.selectActionFunction = function (fileUrl) {
+                    $("#txtImage").val(fileUrl);
+                };
+                finder.popup();
+            });*@
+        });
+
+    </script>
+
+
+}
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-12 col-12">
+                    <h6 class="h2 text-white d-inline-block mb-0">Tạo bài viết</h6>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <form>
+                        <h6 class="heading-small text-muted mb-4">Thông tin</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="tittle">Tiêu đề</label>
+                                        <input type="text" id="input-username" class="form-control" placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-email">Ảnh đại diện:</label>
+                                        <input type="file" id="txtImage" class="form-control" placeholder="" accept=".jpg,.png,.jpeg,.gif">
+                                        <br />
+                                        <button class="btn btn-round btn-primary" id="btnSelectImage">Chọn ảnh</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-email">Thể loại</label>
+                                        <input type="email" id="input-email" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Mô tả</label>
+                                        <textarea rows="4" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <hr class="my-4">
+                        <!-- Address -->
+                        <h6 class="heading-small text-muted mb-4">Nội dung</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea name="content"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
