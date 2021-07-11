@@ -88,8 +88,7 @@ namespace MayBeYouMissSomeNews.Controllers
                 context.employees.AddOrUpdate(u);
                 context.SaveChanges();
             }
-            var list = context.employees.ToList();
-            return View("Dashboard", u);
+            return View("AdminProfile", u);
         }
     }
 }

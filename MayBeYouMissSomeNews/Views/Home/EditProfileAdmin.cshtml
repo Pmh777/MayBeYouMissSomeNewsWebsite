@@ -1,83 +1,162 @@
 ﻿@model MayBeYouMissSomeNews.Models.employee
-
 @{
     ViewBag.Title = "EditProfileAdmin";
     Layout = "~/Views/Shared/LayoutOfAdmin.cshtml";
 }
 
-<h2>EditProfileAdmin</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.employeeid)
-    <h6 class="heading-small text-muted mb-4">User information</h6>
-    <div class="pb-lg-4">
-        <div class="form-group">
-            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<!-- Header -->
+<!-- Header -->
+<div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(/Content/images/bg.jpg); background-size: cover; background-position: center top;">
+    <!-- Mask -->
+    <span class="mask bg-gradient-default opacity-8"></span>
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+            <div class="col-lg-7 col-md-10">
+                @using MayBeYouMissSomeNews.Models
+                @if (Session["AccountAdmin"] != null)
+                {
 
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                    employee u = (employee)Session["AccountAdmin"];
+                    <h1 class="display-2 text-white">Hello @u.name</h1>
+                    <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+                    <a href="#" class="btn btn-neutral">Edit profile</a>
+                }
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.birthday, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.birthday, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-    <hr class="my-4" />
-    <h6 class="heading-small text-muted mb-4">Contact information</h6>
-    <div class="pl-lg-4">
-        <div class="form-group">
-            @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-    <hr class="my-4" />
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
 </div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-xl-4 order-xl-2">
+            <div class="card card-profile">
+                @if (Session["AccountAdmin"] != null)
+                {
 
-    }
+                    employee u = (employee)Session["AccountAdmin"];
+                    <img src="~/Content/assets/img/theme/img-1-1000x600.jpg" alt="Image placeholder" class="card-img-top">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 order-lg-2">
+                            <div class="card-profile-image">
+                                <a href="#">
+                                    <img src="@u.photo" class="rounded-circle">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-info  mr-4 ">Connect</a>
+                            <a href="#" class="btn btn-sm btn-default float-right">Message</a>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="text-center">
+                            <h5 class="h3">
+                                @u.name<span class="font-weight-light">, 21</span>
+                            </h5>
+                            <div class="h5 font-weight-300">
+                                <i class="ni location_pin mr-2"></i>@u.birthday
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>@u.phone
+                            </div>
+                            <div>
+                                <i class="ni education_hat mr-2"></i>@u.email
+                            </div>
+                        </div>
+                    </div>
 
-    <div>
-        @Html.ActionLink("Back to List", "Dashboard")
+                }
+            </div>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Edit profile </h3>
+                        </div>
+                        <div class="col-4 text-right">
+                            <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+             
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.employeeid)
+                                <h6 class="heading-small text-muted mb-4">User information</h6>
+                                <div class="pl-lg-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.birthday, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-4" />
+                                <!-- Address -->
+                                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                        }
+                  
+                </div>
+            </div>
+        </div>
     </div>
+</div>
