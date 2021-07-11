@@ -1,4 +1,4 @@
-﻿
+﻿@model MayBeYouMissSomeNews.Models.employee
 @{
     Layout = null;
 }
@@ -13,7 +13,7 @@
     <title>Admin | Login</title>
     <!-- Favicon -->
     <link rel="icon" href="~/Content/assets/img/brand/favicon.png" type="image/png">
-    
+
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
@@ -21,10 +21,11 @@
     <link rel="stylesheet" href="~/Content/assets/vendor/fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="~/Content/assets/css/argon.css" type="text/css">
+    @Styles.Render("~/Content/cssRegisterAndLogin")
 </head>
 
 <body class="bg-default">
-    
+
     <!-- Main content -->
     <div class="main-content">
         <!-- Header -->
@@ -50,48 +51,48 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-7">
                     <div class="card bg-secondary border-0 mb-0">
-                        
+
                         <div class="card-body px-lg-5 py-lg-5">
-                            @using (Html.BeginForm("LoginAdmin", "Accounts", FormMethod.Post, new { @role="form" }))
+                            @using (Html.BeginForm("LoginAdmin", "Accounts", FormMethod.Post, new { @role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
-                               @* <form role="form">*@
-                                    <div class="form-group mb-3">
-                                        <div class="input-group input-group-merge input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                            </div>
-                                            @*<input class="form-control" placeholder="Email" type="email">*@
-                                            @Html.TextBox("email", "", new { required = "required", placeholder = "Email", type="email",@class="form-control" })
+                                @* <form role="form">*@
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                         </div>
+                                        @*<input class="form-control" placeholder="Email" type="email">*@
+                                        @Html.TextBox("email", "", new { required = "required", placeholder = "Email", type = "email", @class = "form-control" })
                                     </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-merge input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                            </div>
-                                            @*<input class="form-control" placeholder="Password" type="password">*@
-                                            @Html.TextBox("password", "", new { required = "required", placeholder = "Mật khẩu", type = "password", @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                         </div>
+                                        @*<input class="form-control" placeholder="Password" type="password">*@
+                                        @Html.TextBox("password", "", new { required = "required", placeholder = "Mật khẩu", type = "password", @class = "form-control" })
                                     </div>
-                                    <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                                        <label class="custom-control-label" for=" customCheckLogin">
-                                            <span class="text-muted">Remember me</span>
-                                        </label>
-                                    </div>
-                                    <div class="text-center">
-                                       @* <button type="button" class="btn btn-primary my-4">Sign in</button>*@
-                                        <input type="submit" value="Đăng nhập" class="btn btn-primary my-4" />
-                                    </div>
-                              @*  </form>*@
+                                </div>
+                                <div class="custom-control custom-control-alternative custom-checkbox">
+                                    <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+                                    <label class="custom-control-label" for=" customCheckLogin">
+                                        <span class="text-muted">Remember me</span>
+                                    </label>
+                                </div>
+                                <div class="text-center">
+                                    @* <button type="button" class="btn btn-primary my-4">Sign in</button>*@
+                                    <input type="submit" value="Đăng nhập" class="btn btn-primary my-4" />
+                                </div>
+                                @*  </form>*@
                             }
-                            </div>
+                        </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-6">
-                            <small>@Html.ActionLink("Forgot password?", "ForgotPassword", "Accounts","", new { @class = "text-light" })</small>
-                            
+                            <small>@Html.ActionLink("Forgot password?", "ForgotPassword", "Accounts", "", new { @class = "text-light" })</small>
+
                         </div>
                         <div class="col-6 text-right">
                             <small>
@@ -112,7 +113,7 @@
                         &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </footer>

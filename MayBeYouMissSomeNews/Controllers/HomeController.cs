@@ -50,5 +50,46 @@ namespace MayBeYouMissSomeNews.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult EditProfileAdmin(int id)
+        {
+            DBContext context = new DBContext();
+            employee dbUpdate = context.employees.SingleOrDefault(p => p.employeeid == id);
+            if (dbUpdate == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dbUpdate);
+        }
+        [HttpPost, ActionName("EditProfileAdmin")]
+        public ActionResult EditProfileAdmin(FormCollection employee)
+        {
+            DBContext context = new DBContext();
+            var employeeId = Convert.ToInt32(employee["employeeid"]);
+            employee dbUpdate = context.employees.FirstOrDefault(p => p.employeeid ==employeeId);
+
+            employee u = dbUpdate;
+            if (dbUpdate != null)
+            {
+      
+                u.name = employee["name"];
+                u.email = employee["email"]; 
+                u.birthday = Convert.ToDateTime(employee["birthday"]);
+                u.status = 1;
+                u.gender = 1;
+                u.type = 1;
+                u.phone = employee["phone"];
+                u.address = employee["address"];
+                u.createddate = DateTime.Now;
+                u.createdby = null;
+                u.modifiedby = null;
+                u.modifieddate = null;
+                u.photo = null;
+                context.employees.AddOrUpdate(u);
+                context.SaveChanges();
+            }
+            var list = context.employees.ToList();
+            return View("Dashboard", u);
+        }
     }
 }

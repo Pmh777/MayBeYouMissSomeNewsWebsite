@@ -152,6 +152,8 @@ namespace MayBeYouMissSomeNews.Controllers
                     u.status = 1;
                     u.gender = 1;
                     u.type = 1;
+                    u.phone = f["phone"].ToString();
+                    u.address = f["address"].ToString();
                     u.createddate = DateTime.Now;
                     u.createdby = null;
                     u.modifiedby = null;
@@ -159,12 +161,13 @@ namespace MayBeYouMissSomeNews.Controllers
                     u.photo = null;
                     context.employees.Add(u);
                     context.SaveChanges();
-                    return View();
+                    ViewBag.Status = "Đăng kí thành công!Vui lòng chờ xét duyệt!";
+                    return View("LoginAdmin");
                 }
                 else
                 {
                     ViewBag.Status = "Email đã được đăng ký!";
-                    return View();
+                    return View("");
                 }
             }
 
