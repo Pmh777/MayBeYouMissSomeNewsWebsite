@@ -1,0 +1,66 @@
+﻿@model MayBeYouMissSomeNews.Models.category
+@using MayBeYouMissSomeNews.Models
+@{
+    ViewBag.Title = "DetailCategory";
+    Layout = "~/Views/Shared/LayoutOfAdmin.cshtml";
+}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Chi Tiết Thể Loại</h6>
+
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+
+                    <a href="#" class="btn btn-sm btn-neutral"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card-body">
+                <!-- Card header -->
+
+
+                <form>
+                    @using (Html.BeginForm("CreateCategory", "Categories", FormMethod.Post, new { @role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="pb-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <label class="form-control-label" for="input-username">Name:</label>
+                                        <label class="form-control-label" for="input-username">@Html.DisplayFor(model => model.name)</label>
+                                    </div>
+                                    <div class="form-group">
+                                            @if (Model.status == 1)
+                                            {
+                                            <label class="form-control-label" for="input-username">Trạng Thái:</label>
+                                            <label class="form-control-label" for="input-username"> Hiển Thị</label>
+                                            }
+                                        </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-username">Ngày tạo:</label>
+                                        <label class="form-control-label" for="input-username">@Html.DisplayFor(model => model.createddate)</label>
+                                    </div>
+
+                                </div>
+
+                                </div>
+                            </div>
+                                }
+</form>
+                <p>
+                    @Html.ActionLink("<<<", "List")
+                </p>
+</div></div></div></div>

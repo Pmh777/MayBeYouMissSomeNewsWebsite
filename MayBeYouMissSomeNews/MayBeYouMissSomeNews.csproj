@@ -4011,6 +4011,7 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\styleRegisterAndLogin.css" />
     <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\test.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -4604,6 +4605,10 @@
     <Content Include="Views\Categories\CreateCategory.cshtml" />
     <Content Include="Views\Categories\EditCategory.cshtml" />
     <Content Include="Views\News\AddNews.cshtml" />
+    <Content Include="Views\Categories\DetailCategory.cshtml" />
+    <Content Include="Views\Categories\TemporaryDeleteCategory.cshtml" />
+    <Content Include="Views\Categories\ShowListcategory.cshtml" />
+    <Content Include="Views\Categories\ShowListcategorydetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

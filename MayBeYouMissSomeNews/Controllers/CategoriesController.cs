@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,6 +18,49 @@ namespace MayBeYouMissSomeNews.Controllers
             var listcategory = context.categories.ToList();
             return View(listcategory);
         }
+        private DBContext db = new DBContext();
+        public ActionResult DetailCategory(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            category category = db.categories.Find(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category);
+
+        }
+         
+        public ActionResult TemporaryDeleteCategory(int id)
+        {
+            DBContext context = new DBContext();
+            category dbUpdate = context.categories.FirstOrDefault(p => p.categoryid == id);
+            return View(dbUpdate);
+        }
+        [Authorize]
+        [HttpPost, ActionName("TemporaryDeleteCategory")]
+        public ActionResult TemporaryDeleteCategory(FormCollection f)
+        {
+            DBContext context = new DBContext();
+            var categoryid = Convert.ToInt32(f["categoryid"]);
+            category dbUpdate = context.categories.FirstOrDefault(p => p.categoryid == categoryid);
+            category u = dbUpdate;
+            if (dbUpdate != null)
+            {
+                u.name = f["name"];
+                u.status = 0;
+                u.modifieddate = DateTime.Now;
+                context.categories.AddOrUpdate(u);
+                context.SaveChanges();
+            }
+            var list = context.categories.ToList();
+            return View("List", u);
+        }
+
+
         public ActionResult CreateCategory()
         {
             return View();
@@ -33,7 +77,7 @@ namespace MayBeYouMissSomeNews.Controllers
             if (categoryInvalid == null)
             {
                 u.name = f["name"].ToString();
-                u.status = 1;
+                u.status =1;
                 u.createdby = null;
                 u.createddate = DateTime.Now;
                 context.categories.Add(u);
@@ -46,23 +90,47 @@ namespace MayBeYouMissSomeNews.Controllers
         public ActionResult EditCategory(int id)
         {
             DBContext context = new DBContext();
-            category categoryEdit = context.categories.FirstOrDefault(p => p.categoryid == id);
-            return View(categoryEdit);
+            category dbUpdate = context.categories.FirstOrDefault(p => p.categoryid == id);
+            return View(dbUpdate);
         }
         [Authorize]
         [HttpPost, ActionName("EditCategory")]
-        public ActionResult Edit(category category)
+        public ActionResult EditCategory(FormCollection f)
         {
             DBContext context = new DBContext();
-            category categoryEdit = context.categories.FirstOrDefault(p => p.categoryid == category.categoryid);
-            category u = new category();
-            if (categoryEdit != null)
+            var categoryid = Convert.ToInt32(f["categoryid"]);
+            category dbUpdate = context.categories.FirstOrDefault(p => p.categoryid == categoryid);
+            category u = dbUpdate;
+            if (dbUpdate != null)
             {
-                context.categories.AddOrUpdate(category);
+                u.name = f["name"];
+                u.status = 1;
+                u.modifieddate = DateTime.Now;
+                context.categories.AddOrUpdate(u);
                 context.SaveChanges();
             }
             var list = context.categories.ToList();
-            return View("List", list);
+            return View("List", u);
+        }
+        public ActionResult ShowListcategory()
+        {
+            DBContext context = new DBContext();
+            var listcategory = context.news.ToList();
+            return View(listcategory);
+        }
+        public ActionResult ShowListcategorydetail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            news news = db.news.Find(id);
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+            return View(news);
+
         }
     }
 }

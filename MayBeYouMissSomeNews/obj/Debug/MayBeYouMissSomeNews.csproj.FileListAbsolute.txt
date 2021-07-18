@@ -649,3 +649,14 @@ C:\Users\Admin\Desktop\place c\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\
 C:\Users\Admin\Desktop\place c\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder_FileEditor.pdb
 C:\Users\Admin\Desktop\place c\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder_ImageResize.pdb
 C:\Users\Admin\Desktop\place c\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder_Watermark.pdb
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\BCrypt.Net.dll
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder.dll
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder_FileEditor.dll
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder_ImageResize.dll
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder_Watermark.dll
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\BCrypt.Net.pdb
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\BCrypt.Net.xml
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder.pdb
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder_FileEditor.pdb
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder_ImageResize.pdb
+D:\ĐỒ ÁN LẬP TRÌNH WEB\MayBeYouMissSomeNewsWebsite\MayBeYouMissSomeNews\bin\CKFinder_Watermark.pdb

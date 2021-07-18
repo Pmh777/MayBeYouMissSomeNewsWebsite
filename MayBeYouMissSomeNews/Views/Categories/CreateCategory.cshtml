@@ -5,45 +5,60 @@
     Layout = "~/Views/Shared/LayoutOfAdmin.cshtml";
 }
 
-<h2>CreateCategory</h2>
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Tạo Mới Thể Loại</h6>
 
-@using (Html.BeginForm("CreateCategory", "Categories", FormMethod.Post, new { @role = "form" }))
-{
-    @Html.AntiForgeryToken()
+                </div>
+                <div class="col-lg-6 col-5 text-right">
 
-    @* <form role="form">*@
-    <div class="form-group mb-3">
-        <div class="input-group input-group-merge input-group-alternative">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-user-o"></i></span>
+                    <a href="#" class="btn btn-sm btn-neutral"><i class="fas fa-trash"></i></a>
+                </div>
             </div>
-            @*<input class="form-control" placeholder="Email" type="email">*@
-            @Html.TextBox("name", "", new { required = "required", placeholder = "Name", type = "text", @class = "form-control" })
         </div>
     </div>
-    <div class="form-group mb-3">
-        <div class="input-group input-group-merge input-group-alternative">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="line-numbers-rows" ></i></span>
-            </div>
-            @*<input class="form-control" placeholder="Email" type="email">*@
-            @Html.TextBox("status", "", new { required = "required", placeholder = "Status", type = "number", @class = "form-control" })
-        </div>
-    </div>
-    @*<div class="form-group mb-3">
-        <div class="input-group input-group-merge input-group-alternative">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="line-numbers-rows("1,2,3")"></i></span>
-            </div>
-            @*<input class="form-control" placeholder="Email" type="email">
-            @Html.TextBox("createdby", "", new { required = "required", placeholder = "Createdby", type = "number", @class = "form-control" })
-        </div>
-    </div>
-        *@
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-}
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
 
+                @using (Html.BeginForm("CreateCategory", "Categories", FormMethod.Post, new { @role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @* <form role="form">*@
+                    <div class="form-group mb-3">
+                        <div class="input-group input-group-merge input-group-alternative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user-o"></i></span>
+                            </div>
+                            @*<input class="form-control" placeholder="Email" type="email">*@
+                            @Html.TextBox("name", "", new { required = "required", placeholder = "Name", type = "text", @class = "form-control" })
+                        </div>
+                    </div>
+                  
+                    @*<div class="form-group mb-3">
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="line-numbers-rows("1,2,3")"></i></span>
+                                </div>
+                                @*<input class="form-control" placeholder="Email" type="email">
+                                @Html.TextBox("createdby", "", new { required = "required", placeholder = "Createdby", type = "number", @class = "form-control" })
+                            </div>
+                        </div>
+                    *@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+                <div>
+                    @Html.ActionLink("Back to List", "List")
+                </div>
+</div></div></div></div>
